@@ -39,6 +39,21 @@ public class LineComparisonComputationProgram {
 				else {
                 System.out.println("The lines are not equal");
             }
+
+//comparing lines
+
+
+            System.out.println("Comparing two lines ");
+            int compare=length1.compareTo(length2);
+            if (compare > 0) {
+                System.out.println("first line " + length1 + " is greater than line two " + length2);
+            }
+            else if (compare < 0) {
+                System.out.println("first line " + length1 + " is less than line two " + length2);
+            }
+            else {
+                System.out.println("first line " + length1 + " is equal to the line two " + length2);
+            }
 		}
 	}
 }
