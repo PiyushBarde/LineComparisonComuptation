@@ -1,59 +1,71 @@
 import java.util.Scanner;
-
 public class LineComparisonComputationProgram {
-     static double line(int a1, int b1, int a2, int b2) {
-        double measure;
-        measure = Math.sqrt(((a2 - a1) * (a2 - a1)) + ((b2 - b1) * (b2 - b1)));
-        return measure;
-    	}
+    static class LineComparison
+    {
+        int x1;
+        int y1;
+        int x2;
+        int y2;
 
-		public static void main(String[] args) {
+        static double LengthLine(int a1, int b1, int a2, int b2) {
+            double measure;
+            measure = Math.sqrt(((a2 - a1) * (a2 - a1)) + ((b2 - b1) * (b2 - b1)));
+            return measure;
+        }
+    }
+
+    static double lengthProcedure()
+    {
+
+        LineComparison line =  new LineComparison();
         Scanner Num = new Scanner(System.in);
-        Scanner ans = new Scanner(System.in);
-		  System.out.println("Enter the Co-ordinates of x1 & y1 : ");
-        int x1 = Num.nextInt();
-        int y1 = Num.nextInt();
+        System.out.println("Enter the Co-ordinates of x1 & y1 : ");
+        line.x1 = Num.nextInt();
+        line.y1 = Num.nextInt();
         System.out.println("Enter the Co-ordinates of x2 & y2 : ");
-        int x2 = Num.nextInt();
-        int y2 = Num.nextInt();
-        Double length1 = Math.sqrt(( (x2 - x1) * (x2 - x1) ) + ( (y2 - y1) * (y2 - y1)));
-        System.out.println("Length of the Line is : " + length1 + " Unit" );
+        line.x2 = Num.nextInt();
+        line.y2 = Num.nextInt();
+        double lengthOfLineComputed =  LineComparison.LengthLine(line.x1,line.y1,line.x2,line.y2);
+        System.out.println("Length of the Line is : " + lengthOfLineComputed + " Unit" );
+        return lengthOfLineComputed;
+    }
 
-//comparing two lines
+    static void equalsIf(double subLength1,double subLength2)
+    {
+        Double subLength1ForObject = new Double(subLength1);
+        Double subLength2ForObject = new Double(subLength2);
+        if (subLength1ForObject.equals(subLength2ForObject)) {
+            System.out.println("The length of lines are equal");
+        }
+        else {
+            System.out.println("The lines are not equal");
+        }
+    }
 
-		System.out.println("do you want to see if lines are equal (Y-yes/N-no): ");
-        String stay = ans.nextLine();
-        if (stay.equals("Y")) {
-            System.out.println("Enter the Co-ordinates of x3 & y3 : ");
-            int x3 = Num.nextInt();
-            int y3 = Num.nextInt();
-            System.out.println("Enter the Co-ordinates of x4 & y4 : ");
-            int x4 = Num.nextInt();
-            int y4 = Num.nextInt();
-            Double length2;
-            length2 = line(x3, y3, x4, y4);
-            System.out.println("Length of the Line is : " + length2 + " Unit");
-            if (length1.equals(length2)) {
-                System.out.println("The length of lines are equal");
-            }
-				else {
-                System.out.println("The lines are not equal");
-            }
+    static void comparing(double subLength1,double subLength2)
+    {
+        Double subLength1ForObject = new Double(subLength1);
+        Double subLength2ForObject = new Double(subLength2);
+        System.out.println("Comparing two lines ");
+        int compare=subLength1ForObject.compareTo(subLength2ForObject);
+        if (compare > 0) {
+            System.out.println("first line " + subLength1ForObject + " is greater than line two " + subLength2ForObject);
+        }
+        else if (compare < 0) {
+            System.out.println("first line " + subLength1ForObject + " is less than line two " + subLength2ForObject);
+        }
+        else {
+            System.out.println("first line " + subLength1ForObject + " is equal to the line two " + subLength2ForObject);
+        }
+    }
 
-//comparing lines
-
-
-            System.out.println("Comparing two lines ");
-            int compare=length1.compareTo(length2);
-            if (compare > 0) {
-                System.out.println("first line " + length1 + " is greater than line two " + length2);
-            }
-            else if (compare < 0) {
-                System.out.println("first line " + length1 + " is less than line two " + length2);
-            }
-            else {
-                System.out.println("first line " + length1 + " is equal to the line two " + length2);
-            }
-		}
-	}
+    public static void main(String[] args) {
+        double length1 = lengthProcedure();
+        System.out.println("------------- For Second Line ------------");
+        double length2 = lengthProcedure();
+        System.out.println("------------- checking if lines are equal ------------");
+        equalsIf(length1,length2);
+        System.out.println("------------- Comparing two lines ------------");
+        comparing(length1,length2);
+    }
 }
